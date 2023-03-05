@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 import theme from '@/styles/theme'
 import GlobalStyles from '@/styles/globals'
+import Navbar from '@/components/Navbar'
 
 function App({ Component, pageProps }) {
   return (
@@ -20,6 +21,7 @@ function App({ Component, pageProps }) {
         ></link>
       </Head>
       <GlobalStyles />
+      <Navbar />
       <Component {...pageProps} />
     </ThemeProvider>
   )
