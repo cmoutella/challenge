@@ -15,7 +15,7 @@ import {
 import Button from '../Button/index.styles'
 import UnavailabilityFeedback from '../UnavailabilityFeedback'
 
-const PaymentForm = () => {
+const PaymentDataForm = () => {
   const formikContext = React.useContext(FormikContext)
 
   if (!formikContext) {
@@ -26,7 +26,7 @@ const PaymentForm = () => {
     <FormWrapper>
       <FormTitle>Estamos quase lá!</FormTitle>
       <FormSubtitle>Insira seus dados de pagamento abaixo:</FormSubtitle>
-      {/* tem um troço aqui */}
+      {/* TODO cards display */}
       <>
         <FieldWrapper>
           <CreditCardNumberField />
@@ -53,4 +53,4 @@ const PaymentForm = () => {
   )
 }
 
-export default PaymentForm
+export default PaymentDataForm

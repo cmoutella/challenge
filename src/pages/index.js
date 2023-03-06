@@ -1,4 +1,4 @@
-import PaymentForm from '@/components/Form/input'
+import PaymentDataForm from '@/components/PaymentDataForm'
 import * as yup from 'yup'
 import { FormikProvider, useFormik } from 'formik'
 import { Container } from '@mui/material'
@@ -39,7 +39,7 @@ export default function Plans() {
     <Container>
       <FormikProvider value={formik}>
         <FormSections>
-          <PaymentForm />
+          <PaymentDataForm />
           <PlanSelectionGroup />
         </FormSections>
       </FormikProvider>

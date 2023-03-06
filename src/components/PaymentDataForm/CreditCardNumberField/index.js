@@ -1,3 +1,4 @@
+import { toCardFormat } from '@/utils/fieldFormatting'
 import { FormikContext } from 'formik'
 import { useContext } from 'react'
 import BaseInput from '../BaseInput'
@@ -8,8 +9,13 @@ const CreditCardNumberField = () => {
   const placeholder = '0000 0000 0000 0000'
 
   const formikContext = useContext(FormikContext)
-  if (!formikContext) {
-    return null
+
+  console.log(formikContext.values[elementId])
+
+  const onChange = (e) => {
+    const value = e.target.value
+    toCardFormat(value)
+    formikContext.setFieldValue(elementId, toCardFormat(value))
   }
 
   return (
@@ -20,7 +26,7 @@ const CreditCardNumberField = () => {
       label={fieldLabel}
       elementId={elementId}
       placeholder={placeholder}
-      onChange={formikContext.handleChange}
+      onChange={onChange}
       helperText={
         formikContext.touched.cardCreditNumber &&
         formikContext.errors.cardCreditNumber
