@@ -23,3 +23,7 @@ export const InputField = styled(Input)`
     }
   `}
 `
+
+export const StoryWrapper = styled.div`
+  max-width: 300px;
+`

@@ -1,10 +1,25 @@
-import CreditCardVerificationCodeField from '.'
+import CreditCardValidationCodeField from '.'
+import { FormikProvider, useFormik } from 'formik'
+import { StoryWrapper } from '../index.styles'
 
 export default {
-  title: 'CreditCardVerificationCodeField',
-  component: CreditCardVerificationCodeField
+  title: 'CreditCardValidationCodeField',
+  component: CreditCardValidationCodeField
 }
 
-export const Default = () => (
-  <CreditCardVerificationCodeField label="Teste" id="element" />
-)
+export const Default = () => {
+  const formik = useFormik({
+    isInitialValid: false,
+    initialValues: {
+      cardVerificationCode: ''
+    }
+  })
+
+  return (
+    <FormikProvider value={formik}>
+      <StoryWrapper>
+        <CreditCardValidationCodeField />
+      </StoryWrapper>
+    </FormikProvider>
+  )
+}

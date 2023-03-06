@@ -2,7 +2,6 @@ import { FormControl, MenuItem, Select } from '@mui/material'
 import { Label } from './index.styles'
 import PropTypes from 'prop-types'
 import { useContext } from 'react'
-import { PlansContext } from '@/provider/PlansContext'
 import { FormikContext } from 'formik'
 
 const InstallmentsSelection = () => {

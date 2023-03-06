@@ -33,3 +33,7 @@ export const InlineFieldWrapper = styled.div`
     margin-right: ${theme.spacings.lg};
   `}
 `
+
+export const StoryWrapper = styled.div`
+  max-width: 300px;
+`

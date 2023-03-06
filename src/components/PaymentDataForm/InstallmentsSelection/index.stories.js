@@ -1,28 +1,25 @@
-import CreditCardExpirationField from '.'
+import InstallmentsSelection from '.'
 import { FormikProvider, useFormik } from 'formik'
 import { StoryWrapper } from '../index.styles'
 
 export default {
-  title: 'CreditCardExpirationField',
-  component: CreditCardExpirationField
+  title: 'InstallmentsSelection',
+  component: InstallmentsSelection
 }
 
 export const Default = () => {
   const formik = useFormik({
     isInitialValid: false,
     initialValues: {
-      cardExpirationDate: ''
+      installments: '',
+      maxInstallments: 1
     }
   })
 
   return (
     <FormikProvider value={formik}>
       <StoryWrapper>
-        <CreditCardExpirationField
-          label="Teste"
-          id="element"
-          placeholder="MM/AA"
-        />
+        <InstallmentsSelection />
       </StoryWrapper>
     </FormikProvider>
   )

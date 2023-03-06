@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react'
 import { FormikContext } from 'formik'
 import { onlyNumbers, formatCPF } from '@brazilian-utils/helper-only-numbers'
-import BaseInput from '../BaseInput'
 import { isValidCpf } from '@brazilian-utils/is-valid-cpf'
+import BaseInput from '../BaseInput'
 
 const CreditCardOwnerIdField = () => {
   const [isValidInput, setIsValidInput] = useState(true)
-  const fieldLabel = 'Nome impresso no cartão'
+  const fieldLabel = 'CPF'
   const elementId = 'ownerId'
   const placeholder = '000.000.000-00'
 

@@ -1,10 +1,25 @@
-import CreditCardNumberField from '.'
+import CreditCardOwnerIdField from '.'
+import { FormikProvider, useFormik } from 'formik'
+import { StoryWrapper } from '../index.styles'
 
 export default {
-  title: 'CreditCardNumberField',
-  component: CreditCardNumberField
+  title: 'CreditCardOwnerIdField',
+  component: CreditCardOwnerIdField
 }
 
-export const Default = () => (
-  <CreditCardNumberField label="Teste" id="element" placeholder="MM/AA" />
-)
+export const Default = () => {
+  const formik = useFormik({
+    isInitialValid: false,
+    initialValues: {
+      ownerId: ''
+    }
+  })
+
+  return (
+    <FormikProvider value={formik}>
+      <StoryWrapper>
+        <CreditCardOwnerIdField />
+      </StoryWrapper>
+    </FormikProvider>
+  )
+}
