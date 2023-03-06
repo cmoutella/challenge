@@ -29,7 +29,8 @@ const PlanSelectionGroup = () => {
     const values = {
       planId: selectedPlan.id,
       storeId: selectedPlan.storeId,
-      gateway: selectedPlan.gateway
+      gateway: selectedPlan.gateway,
+      maxInstallments: selectedPlan.installments
     }
 
     formikContext.setValues(values)

@@ -36,7 +36,8 @@ export default function Plans() {
       installments: '',
       planId: '',
       storeId: '',
-      gateway: ''
+      gateway: '',
+      maxInstallments: 1
     },
     validationSchema: validationSchema
   })

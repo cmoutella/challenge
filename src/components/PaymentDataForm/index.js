@@ -1,10 +1,14 @@
-import { useContext } from 'react'
+import { useContext, useMemo } from 'react'
 import { FormikContext } from 'formik'
 import CouponField from './CouponField'
 import CreditCardExpirationField from './CreditCardExpirationField'
 import CreditCardNumberField from './CreditCardNumberField'
 import CreditCardOwnerIdField from './CreditCardOwnerIdField'
 import CreditCardOwnerNameField from './CreditCardOwnerNameField'
+import CreditCardVerificationCodeField from './CreditCardValidationCodeField'
+import InstallmentsSelection from './InstallmentsSelection'
+import Button from '../Button/index.styles'
+import UnavailabilityFeedback from '../UnavailabilityFeedback'
 import {
   FieldWrapper,
   FormSubtitle,
@@ -13,9 +17,6 @@ import {
   InlineFieldWrapper,
   ValidationSection
 } from './index.styles'
-import Button from '../Button/index.styles'
-import UnavailabilityFeedback from '../UnavailabilityFeedback'
-import CreditCardVerificationCodeField from './CreditCardCSVField'
 
 const PaymentDataForm = () => {
   const formikContext = useContext(FormikContext)
@@ -49,6 +50,9 @@ const PaymentDataForm = () => {
         </FieldWrapper>
         <FieldWrapper>
           <CouponField />
+        </FieldWrapper>
+        <FieldWrapper>
+          <InstallmentsSelection />
         </FieldWrapper>
       </>
       <Button type="submit" disabled={formikContext.isValid} fullWidth>
