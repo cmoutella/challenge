@@ -1,5 +1,5 @@
-import { Input } from '@mui/material'
 import BaseInput from '.'
+import { StoryWrapper } from './index.styles'
 
 export default {
   title: 'BaseInput',
@@ -7,10 +7,7 @@ export default {
 }
 
 export const Basic = () => (
-  <BaseInput
-    label="Teste"
-    id="element"
-    placeholder="MM/AA"
-    inputField={<Input />}
-  />
+  <StoryWrapper>
+    <BaseInput label="BaseInput" id="element" placeholder="Placeholder" />
+  </StoryWrapper>
 )
