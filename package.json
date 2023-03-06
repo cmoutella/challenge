@@ -21,6 +21,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/material": "^5.11.11",
     "@mui/styled-engine-sc": "^5.11.11",
+    "creditcard.js": "^3.0.30",
     "eslint": "^8.35.0",
     "eslint-config-next": "13.2.3",
     "formik": "^2.2.9",

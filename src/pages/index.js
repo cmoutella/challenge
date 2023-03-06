@@ -11,7 +11,10 @@ export default function Plans() {
       .number()
       .min(16, 'insira um cartão válido')
       .required('Insira um cartão de crédito'),
-    creditCardExpiration: yup.number().required('Insira validade do cartão'),
+    creditCardExpiration: yup
+      .string()
+      .trim()
+      .required('Insira validade do cartão'),
     ownerName: yup
       .string()
       .min(3, 'Insira nome como está no cartão')
@@ -30,7 +33,10 @@ export default function Plans() {
       ownerName: '',
       ownerId: '',
       coupon: '',
-      installments: ''
+      installments: '',
+      planId: '',
+      storeId: '',
+      gateway: ''
     },
     validationSchema: validationSchema
   })

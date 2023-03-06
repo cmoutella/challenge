@@ -1,9 +1,11 @@
-import { toCardFormat } from '@/utils/fieldFormatting'
+import { useContext, useState } from 'react'
+import { creditCardNoSpaces, toCardFormat } from '@/utils/fieldFormatting'
+import { isValid } from 'creditcard.js'
 import { FormikContext } from 'formik'
-import { useContext } from 'react'
 import BaseInput from '../BaseInput'
 
 const CreditCardNumberField = () => {
+  const [validInput, setValidInput] = useState(true)
   const fieldLabel = 'Número do cartão'
   const elementId = 'creditCardNumber'
   const placeholder = '0000 0000 0000 0000'
@@ -18,6 +20,13 @@ const CreditCardNumberField = () => {
     formikContext.setFieldValue(elementId, toCardFormat(value))
   }
 
+  const onBlur = () => {
+    const isCardValid = isValid(
+      creditCardNoSpaces(formikContext.values.creditCardNumber)
+    )
+    setValidInput(isCardValid)
+  }
+
   return (
     <BaseInput
       name={elementId}
@@ -27,14 +36,9 @@ const CreditCardNumberField = () => {
       elementId={elementId}
       placeholder={placeholder}
       onChange={onChange}
-      helperText={
-        formikContext.touched.cardCreditNumber &&
-        formikContext.errors.cardCreditNumber
-      }
-      error={
-        formikContext.touched.cardCreditNumber &&
-        Boolean(formikContext.errors.cardCreditNumber)
-      }
+      onBlur={onBlur}
+      helperText={validInput ? '' : 'Número de cartão inválido'}
+      error={!validInput}
     />
   )
 }
