@@ -9,25 +9,42 @@ import {
 } from './index.styles'
 import { PlansContext } from '@/provider/PlansContext'
 import UnavailabilityFeedback from '../UnavailabilityFeedback'
+import { FormikContext } from 'formik'
 
 const PlanSelectionGroup = () => {
   const plans = useContext(PlansContext)
+  const formikContext = useContext(FormikContext)
 
-  console.log('group')
-  console.log(plans)
-
-  if (!plans) {
+  if (!plans || !formikContext) {
     return <UnavailabilityFeedback />
+  }
+
+  const onChange = (e) => {
+    const planId = e.target.value
+    const selected = plans.find((pln) => pln.storeId === planId)
+    valuesToFormik(selected)
+  }
+
+  const valuesToFormik = (selectedPlan) => {
+    const values = {
+      planId: selectedPlan.id,
+      storeId: selectedPlan.storeId,
+      gateway: selectedPlan.gateway
+    }
+
+    formikContext.setValues(values)
   }
 
   return (
     <FormSection>
-      <SectionTitle>Confira o seu plano</SectionTitle>
+      <SectionTitle aria-label="plans-section">
+        Confira o seu plano
+      </SectionTitle>
       <SectionSubtitle>fulano@cicrano.com.br</SectionSubtitle>
       <RadioGroup
-        aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="female"
-        name="radio-buttons-group"
+        aria-labelledby="plans-section"
+        defaultValue="annually"
+        onChange={onChange}
       >
         {plans.map((plan) => (
           <OptionWrapper key={plan.id}>

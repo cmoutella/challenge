@@ -1,4 +1,4 @@
-import React from 'react'
+import { useContext } from 'react'
 import { FormikContext } from 'formik'
 import CouponField from './CouponField'
 import CreditCardExpirationField from './CreditCardExpirationField'
@@ -16,7 +16,7 @@ import Button from '../Button/index.styles'
 import UnavailabilityFeedback from '../UnavailabilityFeedback'
 
 const PaymentDataForm = () => {
-  const formikContext = React.useContext(FormikContext)
+  const formikContext = useContext(FormikContext)
 
   if (!formikContext) {
     return <UnavailabilityFeedback />

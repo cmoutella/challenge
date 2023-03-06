@@ -1,11 +1,8 @@
-import { useMemo } from 'react'
-import {
-  calcInstallmentValue,
-  calcPriceWithDiscount,
-  displayDiscount
-} from '@/utils/planDataHelpers'
+import { useMemo, useContext } from 'react'
 import PropTypes from 'prop-types'
+import { FormikContext } from 'formik'
 import { FormControlLabel } from '@mui/material'
+import UnavailabilityFeedback from '../UnavailabilityFeedback'
 import {
   PaymentOptionCard,
   DiscountTag,
@@ -16,14 +13,25 @@ import {
   radioLabelRoot,
   StyledRadio
 } from './index.styles'
+import {
+  calcInstallmentValue,
+  calcPriceWithDiscount,
+  displayDiscount
+} from '@/utils/planDataHelpers'
 
 const PlanRadioCard = ({ planData }) => {
+  const formikContext = useContext(FormikContext)
+
+  if (!formikContext) {
+    return <UnavailabilityFeedback />
+  }
+
   return (
     <PaymentOptionCard variant="outlined">
       <FormControlLabel
         id={planData.id}
-        value={planData}
-        control={<StyledRadio />}
+        value={planData.storeId}
+        control={<StyledRadio value={planData.storeId} />}
         label={<OptionLabel planData={planData} />}
         labelPlacement="start"
         classes={{ root: radioLabelRoot, label: radioLabelRoot }}
