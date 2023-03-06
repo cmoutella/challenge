@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components'
 import theme from '@/styles/theme'
 import GlobalStyles from '@/styles/globals'
 import Navbar from '@/components/Navbar'
+import ContextProvider from '@/provider/PlansContext'
 
 function App({ Component, pageProps }) {
   return (
@@ -22,7 +23,9 @@ function App({ Component, pageProps }) {
       </Head>
       <GlobalStyles />
       <Navbar />
-      <Component {...pageProps} />
+      <ContextProvider>
+        <Component {...pageProps} />
+      </ContextProvider>
     </ThemeProvider>
   )
 }
