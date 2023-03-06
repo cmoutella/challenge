@@ -8,6 +8,11 @@ const Button = styled(MuiButton)`
     color: ${theme.colors.light};
     text-transform: capitalize;
     height: 50px;
+
+    &:hover {
+      background-color: ${theme.colors.primary};
+      opacity: 0.85;
+    }
   `}
 `
 
