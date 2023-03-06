@@ -10,10 +10,12 @@ import {
   FormSubtitle,
   FormTitle,
   FormWrapper,
+  InlineFieldWrapper,
   ValidationSection
 } from './index.styles'
 import Button from '../Button/index.styles'
 import UnavailabilityFeedback from '../UnavailabilityFeedback'
+import CreditCardVerificationCodeField from './CreditCardCSVField'
 
 const PaymentDataForm = () => {
   const formikContext = useContext(FormikContext)
@@ -33,7 +35,10 @@ const PaymentDataForm = () => {
         </FieldWrapper>
         <FieldWrapper>
           <ValidationSection>
-            <CreditCardExpirationField />
+            <InlineFieldWrapper>
+              <CreditCardExpirationField />
+            </InlineFieldWrapper>
+            <CreditCardVerificationCodeField />
           </ValidationSection>
         </FieldWrapper>
         <FieldWrapper>

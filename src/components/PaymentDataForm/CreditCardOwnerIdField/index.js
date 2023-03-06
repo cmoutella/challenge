@@ -18,10 +18,6 @@ const CreditCardOwnerIdField = () => {
       name={elementId}
       placeholder={placeholder}
       onChange={formikContext.handleChange}
-      helperText={formikContext.touched.ownerid && formikContext.errors.ownerid}
-      error={
-        formikContext.touched.ownerid && Boolean(formikContext.errors.ownerid)
-      }
     />
   )
 }

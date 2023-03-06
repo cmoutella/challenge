@@ -7,7 +7,7 @@ export const FormWrapper = styled.div`
 
 export const ValidationSection = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 `
 
 export const FieldWrapper = styled.div`
@@ -25,5 +25,11 @@ export const FormTitle = styled(Typography)`
 export const FormSubtitle = styled(Typography)`
   ${({ theme }) => css`
     margin-bottom: ${theme.spacings.xl};
+  `}
+`
+
+export const InlineFieldWrapper = styled.div`
+  ${({ theme }) => css`
+    margin-right: ${theme.spacings.lg};
   `}
 `
