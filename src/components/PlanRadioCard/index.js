@@ -17,7 +17,7 @@ import {
   calcInstallmentValue,
   calcPriceWithDiscount,
   displayDiscount
-} from '@/utils/planDataHelpers'
+} from '../../utils/planDataHelpers'
 
 const PlanRadioCard = ({ planData }) => {
   const formikContext = useContext(FormikContext)

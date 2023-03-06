@@ -76,3 +76,7 @@ export const StyledRadio = styled(Radio)`
     color: ${({ theme }) => theme.colors.primary};
   }
 `
+
+export const StoryWrapper = styled.div`
+  max-width: 300px;
+`

@@ -30,3 +30,7 @@ export const OptionWrapper = styled.div`
 `
 
 export const FormSection = styled.div``
+
+export const StoryWrapper = styled.div`
+  max-width: 300px;
+`

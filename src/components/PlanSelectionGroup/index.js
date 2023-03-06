@@ -7,7 +7,7 @@ import {
   SectionSubtitle,
   SectionTitle
 } from './index.styles'
-import { PlansContext } from '@/provider/PlansContext'
+import { PlansContext } from '../../provider/PlansContext'
 import UnavailabilityFeedback from '../UnavailabilityFeedback'
 import { FormikContext } from 'formik'
 
