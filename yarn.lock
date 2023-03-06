@@ -1155,6 +1155,44 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@brazilian-utils/format-cpf@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@brazilian-utils/format-cpf/-/format-cpf-0.1.8.tgz#2eaad4999a3d7667ea69481d5cbd8e4168cd28c2"
+  integrity sha512-y+Jhtksc2yVKmVlW70DMuTOuTHQvKXiblcae6Gcn6LoT4yp/+P+I961dYhlXJZtjMGPV/PqisHYb14HXASegzA==
+  dependencies:
+    "@brazilian-utils/helper-is-last-char" "^0.1.7"
+    "@brazilian-utils/helper-only-numbers" "^0.1.5"
+
+"@brazilian-utils/helper-generate-checksum@^1.0.0-alpha.3":
+  version "1.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@brazilian-utils/helper-generate-checksum/-/helper-generate-checksum-1.0.0-alpha.3.tgz#49f80d3efbb780ce6dcba7eb6b7e3a835fa5816f"
+  integrity sha512-chB8V6eMZlZJCHIwJ47Pdmw8r/b1f25OuK/yP/1F1oeeippoCIcI2QMK96Yq5FrcQEMNW+UiyCNaUz1DX+XYJg==
+  dependencies:
+    "@brazilian-utils/helper-only-numbers" "^1.0.0-alpha.1"
+
+"@brazilian-utils/helper-is-last-char@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@brazilian-utils/helper-is-last-char/-/helper-is-last-char-0.1.7.tgz#fc9c89dd46f319f25882d06a2cb73b7d5a01a82f"
+  integrity sha512-40bVIHBII6BqPhkHZYa6AP3sLxiX8/SAvfBWgeIeEF0gaLBe+/L2MoOlWVlJarnKKxikHqDeUafbfaG/Bjl/NQ==
+
+"@brazilian-utils/helper-only-numbers@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@brazilian-utils/helper-only-numbers/-/helper-only-numbers-0.1.5.tgz#ad1a18cf219ecd44d8c2c0ae3f058bcd42e795ab"
+  integrity sha512-nsfHGdDr97n8ech2UwMHgUjw9xGxbc5gyGgmSrvqisOzuBAjRx5LfcL7ZNjEiPe4hldwp6AgaMI6WXKCQ3fOfg==
+
+"@brazilian-utils/helper-only-numbers@^1.0.0-alpha.1":
+  version "1.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@brazilian-utils/helper-only-numbers/-/helper-only-numbers-1.0.0-alpha.1.tgz#2c2484d011ad7e117cb46798f797f2af85d9820f"
+  integrity sha512-XzNo6iD12t5F4SiR/Z1dbic95cX3xTL2SZLk8TxZR+G/IZtNXyWfo8q1TqJVvN+PRwH30qLZcaqx/5tiWUZKmA==
+
+"@brazilian-utils/is-valid-cpf@^1.0.0-alpha.3":
+  version "1.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@brazilian-utils/is-valid-cpf/-/is-valid-cpf-1.0.0-alpha.3.tgz#bc2d36081288ef9afc3a334f0169964c7ac81fb8"
+  integrity sha512-FSxC4jZzRI4xYDUY5bzajENfjEuCsrE6RKtOMxkp1WGXi+PoqWnyPfvF4+3wBJQqhX4rF/cztwA05vdO4mBmJw==
+  dependencies:
+    "@brazilian-utils/helper-generate-checksum" "^1.0.0-alpha.3"
+    "@brazilian-utils/helper-only-numbers" "^1.0.0-alpha.1"
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
