@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import { FormikContext } from 'formik'
 import BaseInput from '../BaseInput'
-import { formatExpirationDate } from '@/utils/fieldFormatting'
+import { formatExpirationDate } from '../../../utils/fieldFormatting'
 import { isExpirationDateValid } from 'creditcard.js'
 
 const CreditCardExpirationField = () => {
@@ -22,8 +22,6 @@ const CreditCardExpirationField = () => {
 
   const formikContext = useContext(FormikContext)
 
-  console.log(formikContext)
-
   const onChange = (e) => {
     const date = e.target.value
     formikContext.setFieldValue(elementId, formatExpirationDate(date))
@@ -31,7 +29,6 @@ const CreditCardExpirationField = () => {
 
   const onBlur = () => {
     const dateData = handleDate()
-    console.log(dateData)
     const isValid = isExpirationDateValid(dateData.month, dateData.year)
     setIsValidInput(isValid)
   }

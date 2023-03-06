@@ -1,5 +1,8 @@
 import { useContext, useState } from 'react'
-import { creditCardNoSpaces, toCardFormat } from '@/utils/fieldFormatting'
+import {
+  creditCardNoSpaces,
+  toCardFormat
+} from '../../../utils/fieldFormatting'
 import { isValid } from 'creditcard.js'
 import { FormikContext } from 'formik'
 import BaseInput from '../BaseInput'
@@ -11,8 +14,6 @@ const CreditCardNumberField = () => {
   const placeholder = '0000 0000 0000 0000'
 
   const formikContext = useContext(FormikContext)
-
-  console.log(formikContext.values[elementId])
 
   const onChange = (e) => {
     const value = e.target.value

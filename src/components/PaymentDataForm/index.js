@@ -1,4 +1,4 @@
-import { useContext, useMemo } from 'react'
+import { useContext } from 'react'
 import { FormikContext } from 'formik'
 import CouponField from './CouponField'
 import CreditCardExpirationField from './CreditCardExpirationField'
