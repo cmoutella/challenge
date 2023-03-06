@@ -26,7 +26,7 @@ const PlanRadioCard = ({ planData }) => {
         control={<StyledRadio />}
         label={<OptionLabel planData={planData} />}
         labelPlacement="start"
-        classes={{ root: radioLabelRoot }}
+        classes={{ root: radioLabelRoot, label: radioLabelRoot }}
       />
     </PaymentOptionCard>
   )
@@ -60,9 +60,11 @@ const OptionLabel = ({ planData }) => {
         {currValue}
         <DiscountTag>-{discount}%</DiscountTag>
       </PriceTypography>
-      <InstallmentsTypography>
-        {planData.installments}x de R$ {minInstallmentValue}/mês
-      </InstallmentsTypography>
+      {planData.installments > 1 && (
+        <InstallmentsTypography>
+          {planData.installments}x de R$ {minInstallmentValue}/mês
+        </InstallmentsTypography>
+      )}
     </ContentWrapper>
   )
 }

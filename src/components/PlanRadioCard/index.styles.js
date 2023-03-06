@@ -7,6 +7,11 @@ export const PaymentOptionCard = styled(Card)`
     border: '1px solid';
     border-color: ${theme.colors.primary};
     max-width: 330px;
+    padding: 0 ${theme.spacings.lg};
+
+    .MuiFormControlLabel-root {
+      margin-left: 0 !important;
+    }
   `}
 `
 
@@ -35,11 +40,14 @@ export const InstallmentsTypography = styled(Typography)`
   `}
 `
 export const ContentWrapper = styled(CardContent)`
-  padding: 20px;
+  ${({ theme }) => css`
+    padding: ${theme.spacings.lg} 0;
+    margin-left: 0;
+    width: 200px;
+  `}
 `
 
 export const radioLabelRoot = css`
-  margin-left: 0;
   min-width: 100%;
 `
 
