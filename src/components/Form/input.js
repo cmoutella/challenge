@@ -13,18 +13,13 @@ import {
   ValidationSection
 } from './index.styles'
 import Button from '../Button/index.styles'
+import UnavailabilityFeedback from '../UnavailabilityFeedback'
 
 const PaymentForm = () => {
   const formikContext = React.useContext(FormikContext)
 
-  // TODO: out of order feedback message
   if (!formikContext) {
-    return (
-      <>
-        <h1>:(</h1>
-        <p>Estamos fora do ar</p>
-      </>
-    )
+    return <UnavailabilityFeedback />
   }
 
   return (

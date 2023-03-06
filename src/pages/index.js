@@ -1,7 +1,9 @@
 import PaymentForm from '@/components/Form/input'
 import * as yup from 'yup'
-import { Form, FormikProvider, useFormik } from 'formik'
+import { FormikProvider, useFormik } from 'formik'
 import { Container } from '@mui/material'
+import { FormSections } from './index.styles'
+import PlanSelectionGroup from '@/components/PlanSelectionGroup'
 
 export default function Plans() {
   const validationSchema = yup.object({
@@ -36,9 +38,10 @@ export default function Plans() {
   return (
     <Container>
       <FormikProvider value={formik}>
-        <Form>
+        <FormSections>
           <PaymentForm />
-        </Form>
+          <PlanSelectionGroup />
+        </FormSections>
       </FormikProvider>
     </Container>
   )
