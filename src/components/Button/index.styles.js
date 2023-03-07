@@ -13,6 +13,11 @@ const Button = styled(MuiButton)`
       background-color: ${theme.colors.primary};
       opacity: 0.85;
     }
+
+    &.Mui-disabled {
+      color: ${theme.colors.grey.dark};
+      background-color: ${theme.colors.grey.light};
+    }
   `}
 `
 
