@@ -10,10 +10,12 @@ import {
 import { PlansContext } from '../../provider/PlansContext'
 import UnavailabilityFeedback from '../UnavailabilityFeedback'
 import { FormikContext } from 'formik'
+import usePlans from 'state/plans'
 
 const PlanSelectionGroup = () => {
   const plans = useContext(PlansContext)
   const formikContext = useContext(FormikContext)
+  const { setPlan } = usePlans()
 
   if (!plans || !formikContext) {
     return <UnavailabilityFeedback />
@@ -22,6 +24,7 @@ const PlanSelectionGroup = () => {
   const onChange = (e) => {
     const planId = e.target.value
     const selected = plans.find((pln) => pln.storeId === planId)
+    setPlan(selected)
     valuesToFormik(selected)
   }
 
