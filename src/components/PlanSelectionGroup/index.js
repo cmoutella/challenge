@@ -30,6 +30,7 @@ const PlanSelectionGroup = () => {
 
   const valuesToFormik = (selectedPlan) => {
     const values = {
+      ...formikContext.values,
       planId: selectedPlan.id,
       storeId: selectedPlan.storeId,
       gateway: selectedPlan.gateway,

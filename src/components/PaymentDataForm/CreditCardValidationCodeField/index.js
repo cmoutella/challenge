@@ -4,7 +4,7 @@ import BaseInput from '../BaseInput'
 
 const CreditCardVerificationCodeField = () => {
   const fieldLabel = 'CVV'
-  const elementId = 'cardVerificationCode'
+  const elementId = 'creditCardCVV'
   const placeholder = '000'
   const inputMaxLenght = 3
 
@@ -17,7 +17,7 @@ const CreditCardVerificationCodeField = () => {
 
   return (
     <BaseInput
-      value={formikContext.values.cardVerificationCode}
+      value={formikContext.values.creditCardCVV}
       label={fieldLabel}
       elementId={elementId}
       name={elementId}

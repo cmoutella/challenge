@@ -17,12 +17,36 @@ import {
   InlineFieldWrapper,
   ValidationSection
 } from './index.styles'
+import useSubmitPayment from 'state/submitPayment'
+import { onlyNumbers } from '@brazilian-utils/brazilian-utils'
 
 const PaymentDataForm = () => {
   const formikContext = useContext(FormikContext)
 
+  const { submitPayment } = useSubmitPayment()
+
   if (!formikContext) {
     return <UnavailabilityFeedback />
+  }
+
+  const onSubmit = () => {
+    const requestData = {
+      couponCode: formikContext.values.couponCode,
+      creditCardCPF: onlyNumbers(formikContext.values.ownerId),
+      creditCardCVV: formikContext.values.creditCardCVV,
+      creditCardExpirationDate: formikContext.values.cardExpirationDate,
+      creditCardHolder: formikContext.values.cardOwnerName,
+      creditCardNumber: onlyNumbers(formikContext.values.creditCardNumber),
+      gateway: formikContext.values.gateway,
+      installments: formikContext.values.installments,
+      offerId: formikContext.values.planId,
+      userId: 1
+    }
+
+    submitPayment(requestData, () => {
+      formikContext.resetForm()
+      // change to feedback page
+    })
   }
 
   return (
@@ -55,7 +79,12 @@ const PaymentDataForm = () => {
           <InstallmentsSelection />
         </FieldWrapper>
       </>
-      <Button type="submit" disabled={formikContext.isValid} fullWidth>
+      <Button
+        type="submit"
+        disabled={formikContext.isValid}
+        onClick={onSubmit}
+        fullWidth
+      >
         Finalizar pagamento
       </Button>
     </FormWrapper>
