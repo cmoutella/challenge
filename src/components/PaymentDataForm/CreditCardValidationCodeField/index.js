@@ -1,10 +1,8 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { FormikContext } from 'formik'
 import BaseInput from '../BaseInput'
-import { isSecurityCodeValid } from 'creditcard.js'
 
 const CreditCardVerificationCodeField = () => {
-  const [isValidInput, setIsValidInput] = useState(true)
   const fieldLabel = 'CVV'
   const elementId = 'cardVerificationCode'
   const placeholder = '000'
@@ -17,26 +15,16 @@ const CreditCardVerificationCodeField = () => {
     formikContext.setFieldValue(elementId, cvv)
   }
 
-  const onBlur = () => {
-    const isValid = isSecurityCodeValid(
-      formikContext.values.cardVerificationCode
-    )
-    setIsValidInput(isValid)
-  }
-
   return (
     <BaseInput
-      value={formikContext.values.cardExpirationDate}
+      value={formikContext.values.cardVerificationCode}
       label={fieldLabel}
       elementId={elementId}
       name={elementId}
       id={elementId}
       placeholder={placeholder}
       onChange={onChange}
-      onBlur={onBlur}
       maxLenght={inputMaxLenght}
-      helperText={isValidInput ? '' : 'Código CVV inválido'}
-      error={!isValidInput}
     />
   )
 }
