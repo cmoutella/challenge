@@ -1,6 +1,5 @@
 import { FormControl, MenuItem, Select } from '@mui/material'
 import { Label } from './index.styles'
-import PropTypes from 'prop-types'
 import { useContext } from 'react'
 import { FormikContext } from 'formik'
 
@@ -11,7 +10,11 @@ const InstallmentsSelection = () => {
 
   const options = []
   for (let i = 0; i < formikContext.values.maxInstallments; i++) {
-    options.push(<MenuItem value={i + 1}>{i + 1}x</MenuItem>)
+    options.push(
+      <MenuItem key={i} value={i + 1}>
+        {i + 1}x
+      </MenuItem>
+    )
   }
 
   return (
@@ -32,10 +35,6 @@ const InstallmentsSelection = () => {
       </Select>
     </FormControl>
   )
-}
-
-InstallmentsSelection.propTypes = {
-  maxInstallments: PropTypes.number.isRequired
 }
 
 export default InstallmentsSelection
