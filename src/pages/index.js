@@ -1,11 +1,11 @@
-import PaymentDataForm from '@/components/PaymentDataForm'
+import PaymentDataForm from '../components/PaymentDataForm'
 import * as yup from 'yup'
 import { FormikProvider, useFormik } from 'formik'
 import { Container } from '@mui/material'
 import { FormSections } from './index.styles'
-import PlanSelectionGroup from '@/components/PlanSelectionGroup'
+import PlanSelectionGroup from '../components/PlanSelectionGroup'
 
-export default function Plans() {
+const Plans = () => {
   const validationSchema = yup.object({
     creditCardNumber: yup
       .number()
@@ -22,24 +22,28 @@ export default function Plans() {
     ownerId: yup
       .number()
       .min(11, 'CPF inválido')
-      .required('Insira CPF do dono do cartão')
+      .required('Insira CPF do dono do cartão'),
+    planId: yup.number().required(),
+    installments: yup.number().required()
   })
 
   const formik = useFormik({
-    isInitialValid: false,
+    initialErrors: false,
     initialValues: {
-      cardNumber: '',
+      creditCardNumber: '',
       cardExpirationDate: '',
-      ownerName: '',
+      cardOwnerName: '',
       ownerId: '',
       coupon: '',
+      creditCardCVV: '',
       installments: '',
       planId: '',
       storeId: '',
       gateway: '',
       maxInstallments: 1
     },
-    validationSchema: validationSchema
+    validationSchema: validationSchema,
+    validateOnBlur: true
   })
 
   return (
@@ -53,3 +57,5 @@ export default function Plans() {
     </Container>
   )
 }
+
+export default Plans

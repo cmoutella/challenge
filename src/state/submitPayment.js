@@ -1,14 +1,14 @@
 import { useState, useCallback } from 'react'
 import { REQUEST_STATUS } from './requestStatus'
-import { submitPayment as submitPaymentRequest } from '../api/submitPayment'
+import submitPayment from '../api/submitPayment'
 
 const useSubmitPayment = () => {
   const [submitPaymentStatus, setSubmitPaymentStatus] = useState(
     REQUEST_STATUS.INITIAL
   )
-  const [feedback, setFeedback] = useState({})
+  const [feedback, setFeedback] = useState(null)
 
-  const submitPayment = useCallback(
+  const paymentPost = useCallback(
     async (data) => {
       if (!data) {
         return
@@ -16,7 +16,7 @@ const useSubmitPayment = () => {
 
       setSubmitPaymentStatus(REQUEST_STATUS.LOADING)
       try {
-        const postResponse = await submitPaymentRequest(data)
+        const postResponse = await submitPayment(data)
         setSubmitPaymentStatus(REQUEST_STATUS.DONE)
         setFeedback(postResponse)
       } catch (e) {
@@ -26,7 +26,7 @@ const useSubmitPayment = () => {
     [setSubmitPaymentStatus]
   )
 
-  return { submitPayment, submitPaymentStatus, feedback }
+  return { paymentPost, submitPaymentStatus, feedback }
 }
 
 export default useSubmitPayment

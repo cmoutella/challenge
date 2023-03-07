@@ -23,7 +23,7 @@ import { onlyNumbers } from '@brazilian-utils/brazilian-utils'
 const PaymentDataForm = () => {
   const formikContext = useContext(FormikContext)
 
-  const { submitPayment } = useSubmitPayment()
+  const { paymentPost } = useSubmitPayment()
 
   if (!formikContext) {
     return <UnavailabilityFeedback />
@@ -43,7 +43,7 @@ const PaymentDataForm = () => {
       userId: 1
     }
 
-    submitPayment(requestData, () => {
+    paymentPost(requestData, () => {
       formikContext.resetForm()
       // change to feedback page
     })
