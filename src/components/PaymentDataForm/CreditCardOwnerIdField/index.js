@@ -1,11 +1,9 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { FormikContext } from 'formik'
-import { onlyNumbers, formatCPF } from '@brazilian-utils/helper-only-numbers'
-import { isValidCpf } from '@brazilian-utils/is-valid-cpf'
+import { onlyNumbers, formatCPF } from '@brazilian-utils/brazilian-utils'
 import BaseInput from '../BaseInput'
 
 const CreditCardOwnerIdField = () => {
-  const [isValidInput, setIsValidInput] = useState(true)
   const fieldLabel = 'CPF'
   const elementId = 'ownerId'
   const placeholder = '000.000.000-00'
@@ -14,11 +12,7 @@ const CreditCardOwnerIdField = () => {
 
   const onChange = (e) => {
     const value = e.target.value
-    formikContext.setFieldValue(elementId, formatCPF(value, { pad: true }))
-  }
-
-  const onBlur = () => {
-    setIsValidInput(isValidCpf(onlyNumbers(formikContext.values.ownerId)))
+    formikContext.setFieldValue(elementId, formatCPF(onlyNumbers(value)))
   }
 
   return (
@@ -30,9 +24,6 @@ const CreditCardOwnerIdField = () => {
       name={elementId}
       placeholder={placeholder}
       onChange={onChange}
-      onBlur={onBlur}
-      error={!isValidInput}
-      helperText={isValidInput ? '' : 'CPF inválido'}
     />
   )
 }
