@@ -1,21 +1,14 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import getPlans from '@/resources/getPlans'
+import usePlans from 'state/plans'
 
 export const PlansContext = createContext()
 
 const ContextProvider = ({ children }) => {
-  const [plans, setPlans] = useState(null)
+  const { listPlans, plans } = usePlans()
+
   useEffect(() => {
-    try {
-      getPlans().then((availablePlans) => {
-        console.log(availablePlans)
-        setPlans(availablePlans)
-      })
-    } catch (e) {
-      console.log('Não foi possível acessar os planos')
-      console.log(e)
-    }
+    listPlans()
   }, [])
 
   return <PlansContext.Provider value={plans}>{children}</PlansContext.Provider>
