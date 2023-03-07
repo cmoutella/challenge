@@ -1,11 +1,15 @@
 import { FormikContext } from 'formik'
-import { useContext } from 'react'
+import { useContext, useMemo } from 'react'
+import usePlans from 'state/plans'
 import BaseInput from '../BaseInput'
 
 const CouponField = () => {
   const fieldLabel = 'Cupom'
   const elementId = 'coupon'
-  const placeholder = 'Seu nome'
+  const placeholder = 'Insira aqui'
+  const { plan } = usePlans()
+  const enabled = useMemo(() => plan?.acceptsCoupon, [plan])
+  const disabled = plan ? !enabled : false
 
   const formikContext = useContext(FormikContext)
   if (!formikContext) {
@@ -25,6 +29,7 @@ const CouponField = () => {
       error={
         formikContext.touched.coupon && Boolean(formikContext.errors.coupon)
       }
+      disabled={disabled}
     />
   )
 }
