@@ -19,6 +19,7 @@ const useSubmitPayment = () => {
         setStatus(REQUEST_STATUS.DONE)
       } catch (e) {
         setStatus(REQUEST_STATUS.ERROR)
+        setFeedback(e)
       }
     },
     [setStatus]
