@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
-import theme from '@/styles/theme'
-import GlobalStyles from '@/styles/globals'
-import Navbar from '@/components/Navbar'
-import ContextProvider from '@/provider/PlansContext'
+import theme from '../styles/theme'
+import GlobalStyles from '../styles/globals'
+import Navbar from '../components/Navbar'
+import ContextProvider from '../provider/PlansContext'
+import PaymentManager from '../provider/PaymentContext'
 
 function App({ Component, pageProps }) {
   return (
@@ -24,7 +25,9 @@ function App({ Component, pageProps }) {
       <GlobalStyles />
       <Navbar />
       <ContextProvider>
-        <Component {...pageProps} />
+        <PaymentManager>
+          <Component {...pageProps} />
+        </PaymentManager>
       </ContextProvider>
     </ThemeProvider>
   )

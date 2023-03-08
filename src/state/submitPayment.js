@@ -3,30 +3,28 @@ import { REQUEST_STATUS } from './requestStatus'
 import submitPayment from '../api/submitPayment'
 
 const useSubmitPayment = () => {
-  const [submitPaymentStatus, setSubmitPaymentStatus] = useState(
-    REQUEST_STATUS.INITIAL
-  )
+  const [status, setStatus] = useState(REQUEST_STATUS.INITIAL)
   const [feedback, setFeedback] = useState(null)
 
-  const paymentPost = useCallback(
+  const submit = useCallback(
     async (data) => {
       if (!data) {
         return
       }
 
-      setSubmitPaymentStatus(REQUEST_STATUS.LOADING)
+      setStatus(REQUEST_STATUS.LOADING)
       try {
         const postResponse = await submitPayment(data)
-        setSubmitPaymentStatus(REQUEST_STATUS.DONE)
         setFeedback(postResponse)
+        setStatus(REQUEST_STATUS.DONE)
       } catch (e) {
-        setSubmitPaymentStatus(REQUEST_STATUS.ERROR)
+        setStatus(REQUEST_STATUS.ERROR)
       }
     },
-    [setSubmitPaymentStatus]
+    [setStatus]
   )
 
-  return { paymentPost, submitPaymentStatus, feedback }
+  return { submit, status, feedback }
 }
 
 export default useSubmitPayment
