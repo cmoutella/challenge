@@ -2,27 +2,17 @@ import { render, screen } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
 import PlanRadioCard from '.'
 import theme from '../../styles/theme'
-
-const PLAN_MOCK = {
-  id: 'plan',
-  storeId: 'store_plan',
-  title: 'Anual',
-  description: 'Parcelado',
-  fullPrice: 600,
-  installments: 10,
-  discountAmmount: 60,
-  discountPercentage: 0.1
-}
+import submitPaymentResponse from '../../api/__fixtures__/submitPaymentResponse'
 
 describe('PlanRadioCard', () => {
   test('show plan name', async () => {
     render(
       <ThemeProvider theme={theme}>
-        <PlanRadioCard planData={PLAN_MOCK} />
+        <PlanRadioCard planData={submitPaymentResponse} />
       </ThemeProvider>
     )
     const planTitle = await screen.findByText(
-      `${PLAN_MOCK.title} | ${PLAN_MOCK.description}`
+      `${submitPaymentResponse.title} | ${submitPaymentResponse.description}`
     )
 
     expect(planTitle).toBeInTheDocument()
@@ -30,12 +20,13 @@ describe('PlanRadioCard', () => {
   test('show price', async () => {
     render(
       <ThemeProvider theme={theme}>
-        <PlanRadioCard planData={PLAN_MOCK} />
+        <PlanRadioCard planData={submitPaymentResponse} />
       </ThemeProvider>
     )
-    const calcPrice = PLAN_MOCK.fullPrice - PLAN_MOCK.discountAmmount
+    const calcPrice =
+      submitPaymentResponse.fullPrice - submitPaymentResponse.discountAmmount
     const price = await screen.findByText(
-      `De R$ ${PLAN_MOCK.fullPrice} | Por R$ ${calcPrice}`
+      `De R$ ${submitPaymentResponse.fullPrice} | Por R$ ${calcPrice}`
     )
 
     expect(price).toBeInTheDocument()
@@ -43,11 +34,11 @@ describe('PlanRadioCard', () => {
   test('show discount', async () => {
     render(
       <ThemeProvider theme={theme}>
-        <PlanRadioCard planData={PLAN_MOCK} />
+        <PlanRadioCard planData={submitPaymentResponse} />
       </ThemeProvider>
     )
     const discount = await screen.findByText(
-      `-${PLAN_MOCK.discountPercentage * 100}%`
+      `-${submitPaymentResponse.discountPercentage * 100}%`
     )
 
     expect(discount).toBeInTheDocument()

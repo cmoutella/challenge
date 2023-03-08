@@ -1,21 +1,11 @@
 import PlanRadioCard from '.'
 import { FormikProvider, useFormik } from 'formik'
 import { StoryWrapper } from './index.styles'
+import submitPaymentResponse from '../../api/__fixtures__/submitPaymentResponse'
 
 export default {
   title: 'PlanRadioCard',
   component: PlanRadioCard
-}
-
-const PLAN_MOCK = {
-  id: 'plan',
-  storeId: 'store_plan',
-  title: 'Anual',
-  description: 'Parcelado',
-  fullPrice: 600,
-  installments: 10,
-  discountAmmount: 60,
-  discountPercentage: 0.1
 }
 
 export const Default = () => {
@@ -33,7 +23,7 @@ export const Default = () => {
   return (
     <FormikProvider value={formik}>
       <StoryWrapper>
-        <PlanRadioCard planData={PLAN_MOCK} />
+        <PlanRadioCard planData={submitPaymentResponse} />
       </StoryWrapper>
     </FormikProvider>
   )
