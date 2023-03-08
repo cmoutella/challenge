@@ -1,13 +1,13 @@
 import { FormikContext } from 'formik'
+import { PlansContext } from 'provider/PlansContext'
 import { useContext, useMemo } from 'react'
-import usePlans from 'state/plans'
 import BaseInput from '../BaseInput'
 
 const CouponField = () => {
   const fieldLabel = 'Cupom'
   const elementId = 'coupon'
   const placeholder = 'Insira aqui'
-  const { plan } = usePlans()
+  const { plan } = useContext(PlansContext)
   const enabled = useMemo(() => plan?.acceptsCoupon, [plan])
   const disabled = plan ? !enabled : false
 

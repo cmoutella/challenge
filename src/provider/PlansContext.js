@@ -5,13 +5,17 @@ import usePlans from 'state/plans'
 export const PlansContext = createContext()
 
 const ContextProvider = ({ children }) => {
-  const { listPlans, plans } = usePlans()
+  const plansManager = usePlans()
 
   useEffect(() => {
-    listPlans()
+    plansManager.listPlans()
   }, [])
 
-  return <PlansContext.Provider value={plans}>{children}</PlansContext.Provider>
+  return (
+    <PlansContext.Provider value={plansManager}>
+      {children}
+    </PlansContext.Provider>
+  )
 }
 
 ContextProvider.propTypes = {

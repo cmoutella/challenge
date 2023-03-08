@@ -1,4 +1,5 @@
-import { useContext } from 'react'
+import { useContext, useMemo } from 'react'
+import Link from 'next/link'
 import { FormikContext } from 'formik'
 import CouponField from './CouponField'
 import CreditCardExpirationField from './CreditCardExpirationField'
@@ -17,13 +18,36 @@ import {
   InlineFieldWrapper,
   ValidationSection
 } from './index.styles'
-import useSubmitPayment from 'state/submitPayment'
 import { onlyNumbers } from '@brazilian-utils/brazilian-utils'
+import { PaymentContext } from 'provider/PaymentContext'
 
 const PaymentDataForm = () => {
   const formikContext = useContext(FormikContext)
+  const payment = useContext(PaymentContext)
 
-  const { paymentPost } = useSubmitPayment()
+  const checkValue = (val) => {
+    return val === ''
+  }
+
+  const handleDisabled = () => {
+    if (!formikContext) {
+      return true
+    }
+
+    return (
+      checkValue(formikContext.values.ownerId) ||
+      checkValue(formikContext.values.creditCardCVV) ||
+      checkValue(formikContext.values.creditCardCPF) ||
+      checkValue(formikContext.values.cardExpirationDate) ||
+      checkValue(formikContext.values.cardOwnerName) ||
+      checkValue(formikContext.values.creditCardNumber) ||
+      checkValue(formikContext.values.gateway) ||
+      checkValue(formikContext.values.installments) ||
+      checkValue(formikContext.values.planId)
+    )
+  }
+
+  const disabled = useMemo(() => handleDisabled(), [formikContext])
 
   if (!formikContext) {
     return <UnavailabilityFeedback />
@@ -43,9 +67,8 @@ const PaymentDataForm = () => {
       userId: 1
     }
 
-    paymentPost(requestData, () => {
+    payment.submit(requestData, () => {
       formikContext.resetForm()
-      // change to feedback page
     })
   }
 
@@ -79,14 +102,11 @@ const PaymentDataForm = () => {
           <InstallmentsSelection />
         </FieldWrapper>
       </>
-      <Button
-        type="submit"
-        disabled={formikContext.isValid}
-        onClick={onSubmit}
-        fullWidth
-      >
-        Finalizar pagamento
-      </Button>
+      <Link href="/pagamento" passHref>
+        <Button type="submit" disabled={disabled} onClick={onSubmit} fullWidth>
+          Finalizar pagamento
+        </Button>
+      </Link>
     </FormWrapper>
   )
 }
