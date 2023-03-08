@@ -1,6 +1,6 @@
 import { createContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import usePlans from 'state/plans'
+import usePlans from '../state/plans'
 
 export const PlansContext = createContext()
 

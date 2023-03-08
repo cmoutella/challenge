@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 import { REQUEST_STATUS } from './requestStatus'
-import getPlans from 'api/getPlans'
+import getPlans from '../api/getPlans'
 
 const usePlans = () => {
   const [plans, setPlans] = useState(null)

@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 import PropTypes from 'prop-types'
-import useSubmitPayment from 'state/submitPayment'
+import useSubmitPayment from '../state/submitPayment'
 
 export const PaymentContext = createContext()
 
