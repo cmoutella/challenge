@@ -1,15 +1,23 @@
-import { faPlugCircleXmark } from '@fortawesome/free-solid-svg-icons'
-import { MessageWrapper, Card, Icon, Message } from './index.styles'
+import { PropTypes } from 'prop-types'
+import Button from 'components/Button/index.styles'
+import Link from 'next/link'
+import { MessageWrapper, Card, Message } from './index.styles'
 
-const UnavailabilityFeedback = () => {
+const ErrorMessage = ({ message }) => {
   return (
     <MessageWrapper>
       <Card variant="outlined">
-        <Icon icon={faPlugCircleXmark} size="3x" />
-        <Message>Serviço temporariamente indisponível</Message>
+        <Message>{message}</Message>
+        <Link href="/" passHref>
+          <Button as="a">Voltar ao início</Button>
+        </Link>
       </Card>
     </MessageWrapper>
   )
 }
 
-export default UnavailabilityFeedback
+ErrorMessage.propTypes = {
+  message: PropTypes.string.required
+}
+
+export default ErrorMessage
