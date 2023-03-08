@@ -1,6 +1,6 @@
-import { PropTypes } from 'prop-types'
-import Button from 'components/Button/index.styles'
 import Link from 'next/link'
+import { PropTypes } from 'prop-types'
+import Button from '../Button/index.styles'
 import { MessageWrapper, Card, Message } from './index.styles'
 
 const ErrorMessage = ({ message }) => {
