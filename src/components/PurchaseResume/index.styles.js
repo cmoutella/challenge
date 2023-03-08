@@ -5,6 +5,7 @@ export const Card = styled(MuiCard)`
   ${({ theme }) => css`
     padding: ${theme.spacings.md};
     border-radius: ${theme.borderRadius.md};
+    margin-bottom: 80px;
   `}
 `
 

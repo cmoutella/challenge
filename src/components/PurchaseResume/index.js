@@ -1,5 +1,11 @@
+import { useContext } from 'react'
+import { formatCPF } from '@brazilian-utils/brazilian-utils'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { REQUEST_STATUS } from '../../state/requestStatus'
+import { PaymentContext } from '../../provider/PaymentContext'
+import { PlansContext } from 'provider/PlansContext'
+import { calcPriceWithDiscount } from 'utils/planDataHelpers'
 import {
   Card,
   CardHeader,
@@ -14,6 +20,18 @@ import {
 } from './index.styles'
 
 const PurchaseResume = () => {
+  const payment = useContext(PaymentContext)
+  const { plan } = useContext(PlansContext)
+
+  if (
+    payment.status === REQUEST_STATUS.LOADING ||
+    payment.status === REQUEST_STATUS.ERROR
+  ) {
+    return null
+  }
+
+  const currValue = calcPriceWithDiscount(plan.fullPrice, plan.discountAmmount)
+
   return (
     <Card>
       <CardHeader>
@@ -21,8 +39,11 @@ const PurchaseResume = () => {
           <FontAwesomeIcon icon={faStar} />
         </PlanIconWrapper>
         <PlanData>
-          <PlanTitle>Anual</PlanTitle>
-          <PlanPrice>R$ xxx</PlanPrice>
+          <PlanTitle>{plan.title}</PlanTitle>
+          <PlanPrice>
+            R$ {currValue} | {payment.feedback.installments}x de R${' '}
+            {currValue / plan.installments}
+          </PlanPrice>
         </PlanData>
       </CardHeader>
       <WrapLine>
@@ -33,7 +54,7 @@ const PurchaseResume = () => {
       </WrapLine>
       <ResumeLine>
         <ResumeLabel>CPF</ResumeLabel>
-        <ResumeValue>0000000000</ResumeValue>
+        <ResumeValue>{formatCPF(payment.feedback.creditCardCPF)}</ResumeValue>
       </ResumeLine>
     </Card>
   )
