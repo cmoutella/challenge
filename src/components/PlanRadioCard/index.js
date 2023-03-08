@@ -20,12 +20,6 @@ import {
 } from '../../utils/planDataHelpers'
 
 const PlanRadioCard = ({ planData }) => {
-  const formikContext = useContext(FormikContext)
-
-  if (!formikContext) {
-    return <UnavailabilityFeedback />
-  }
-
   return (
     <PaymentOptionCard variant="outlined">
       <FormControlLabel
@@ -64,8 +58,7 @@ const OptionLabel = ({ planData }) => {
         {planData.title} | {planData.description}
       </TitleTypography>
       <PriceTypography>
-        De R$ {planData.fullPrice} | Por R$
-        {currValue}
+        De R$ {planData.fullPrice} | Por R$ {currValue}
         <DiscountTag>-{discount}%</DiscountTag>
       </PriceTypography>
       {planData.installments > 1 && (
