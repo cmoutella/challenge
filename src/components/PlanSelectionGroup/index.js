@@ -39,7 +39,7 @@ const PlanSelectionGroup = () => {
   }
 
   return (
-    <FormSection>
+    <FormSection data-testid="plan-selection-group">
       <SectionTitle aria-label="plans-section">
         Confira o seu plano
       </SectionTitle>

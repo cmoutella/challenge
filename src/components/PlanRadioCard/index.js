@@ -1,8 +1,6 @@
-import { useMemo, useContext } from 'react'
+import { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { FormikContext } from 'formik'
 import { FormControlLabel } from '@mui/material'
-import UnavailabilityFeedback from '../UnavailabilityFeedback'
 import {
   PaymentOptionCard,
   DiscountTag,
@@ -21,7 +19,7 @@ import {
 
 const PlanRadioCard = ({ planData }) => {
   return (
-    <PaymentOptionCard variant="outlined">
+    <PaymentOptionCard variant="outlined" data-testId="plan-option-card">
       <FormControlLabel
         id={planData.id}
         value={planData.storeId}
