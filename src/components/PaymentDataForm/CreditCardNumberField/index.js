@@ -3,7 +3,6 @@ import {
   creditCardNoSpaces,
   toCardFormat
 } from '../../../utils/fieldFormatting'
-import { isValid } from 'creditcard.js'
 import { FormikContext } from 'formik'
 import BaseInput from '../BaseInput'
 
@@ -19,6 +18,10 @@ const CreditCardNumberField = () => {
     const value = e.target.value
     toCardFormat(value)
     formikContext.setFieldValue(elementId, toCardFormat(value))
+  }
+
+  const isValid = (cardNum) => {
+    return cardNum.length === 18
   }
 
   const onBlur = () => {
