@@ -25,7 +25,7 @@ const Pagamento = () => {
   return (
     <FeedbackWrapper>
       <PaymentFeedbackHeader />
-      <PurchaseResume />
+      <PurchaseResume plan={plan} feedback={feedback} />
       <ActionsWrapper>
         <MuiButton variant="text">Gerenciar assinatura</MuiButton>
         <Link href="/" passHref>
