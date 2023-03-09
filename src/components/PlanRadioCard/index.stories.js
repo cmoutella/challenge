@@ -1,7 +1,7 @@
 import PlanRadioCard from '.'
 import { FormikProvider, useFormik } from 'formik'
 import { StoryWrapper } from './index.styles'
-import planMock from '../../api/__fixtures__/getOnePlan'
+import planMock from '../../api/__fixtures__/onePlanMock'
 
 export default {
   title: 'PlanRadioCard',
