@@ -1,7 +1,7 @@
 import PlanRadioCard from '.'
 import { FormikProvider, useFormik } from 'formik'
 import { StoryWrapper } from './index.styles'
-import submitPaymentResponse from '../../api/__fixtures__/submitPaymentResponse'
+import planMock from '../../api/__fixtures__/getOnePlan'
 
 export default {
   title: 'PlanRadioCard',
@@ -23,7 +23,7 @@ export const Default = () => {
   return (
     <FormikProvider value={formik}>
       <StoryWrapper>
-        <PlanRadioCard planData={submitPaymentResponse} />
+        <PlanRadioCard planData={planMock} />
       </StoryWrapper>
     </FormikProvider>
   )
