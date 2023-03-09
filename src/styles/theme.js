@@ -18,7 +18,7 @@ export default {
     dark: '#151516'
   },
   font: {
-    family: 'DM Sans'
+    family: "'DM Sans', 'sans-serif'"
   },
   spacings: {
     xxs: '4px',
@@ -27,6 +27,7 @@ export default {
     md: '16px',
     lg: '24px',
     xl: '30px',
-    xxl: '40px'
+    xxl: '40px',
+    xxxl: '56px'
   }
 }
