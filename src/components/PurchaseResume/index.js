@@ -1,11 +1,8 @@
-import { useContext } from 'react'
 import { formatCPF } from '@brazilian-utils/brazilian-utils'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { REQUEST_STATUS } from '../../state/requestStatus'
-import { PaymentContext } from '../../provider/PaymentContext'
-import { PlansContext } from 'provider/PlansContext'
-import { calcPriceWithDiscount } from 'utils/planDataHelpers'
+import PropTypes from 'prop-types'
+import { calcPriceWithDiscount } from '../../utils/planDataHelpers'
 import {
   Card,
   CardHeader,
@@ -19,21 +16,11 @@ import {
   WrapLine
 } from './index.styles'
 
-const PurchaseResume = () => {
-  const payment = useContext(PaymentContext)
-  const { plan } = useContext(PlansContext)
-
-  if (
-    payment.status === REQUEST_STATUS.LOADING ||
-    payment.status === REQUEST_STATUS.ERROR
-  ) {
-    return null
-  }
-
+const PurchaseResume = ({ plan, feedback }) => {
   const currValue = calcPriceWithDiscount(plan.fullPrice, plan.discountAmmount)
 
   return (
-    <Card>
+    <Card data-testid="purchase-resume">
       <CardHeader>
         <PlanIconWrapper>
           <FontAwesomeIcon icon={faStar} />
@@ -41,7 +28,7 @@ const PurchaseResume = () => {
         <PlanData>
           <PlanTitle>{plan.title}</PlanTitle>
           <PlanPrice>
-            R$ {currValue} | {payment.feedback.installments}x de R${' '}
+            R$ {currValue} | {feedback.installments}x de R${' '}
             {currValue / plan.installments}
           </PlanPrice>
         </PlanData>
@@ -54,10 +41,15 @@ const PurchaseResume = () => {
       </WrapLine>
       <ResumeLine>
         <ResumeLabel>CPF</ResumeLabel>
-        <ResumeValue>{formatCPF(payment.feedback.creditCardCPF)}</ResumeValue>
+        <ResumeValue>{formatCPF(feedback.creditCardCPF)}</ResumeValue>
       </ResumeLine>
     </Card>
   )
+}
+
+PurchaseResume.propTypes = {
+  plan: PropTypes.object.required,
+  feedback: PropTypes.object.required
 }
 
 export default PurchaseResume
