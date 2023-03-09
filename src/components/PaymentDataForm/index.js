@@ -1,5 +1,7 @@
-import { useContext, useMemo } from 'react'
 import Link from 'next/link'
+import { useContext, useMemo } from 'react'
+import { PaymentContext } from '../../provider/PaymentContext'
+import { onlyNumbers } from '@brazilian-utils/brazilian-utils'
 import { FormikContext } from 'formik'
 import CouponField from './CouponField'
 import CreditCardExpirationField from './CreditCardExpirationField'
@@ -18,8 +20,6 @@ import {
   InlineFieldWrapper,
   ValidationSection
 } from './index.styles'
-import { onlyNumbers } from '@brazilian-utils/brazilian-utils'
-import { PaymentContext } from 'provider/PaymentContext'
 
 const PaymentDataForm = () => {
   const formikContext = useContext(FormikContext)
