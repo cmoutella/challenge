@@ -1,31 +1,24 @@
-import getPlans from './getPlans'
-
-const RESPONSE_MOCK = {
-  couponCode: null,
-  creditCardCPF: '98765432100',
-  creditCardCVV: '123',
-  creditCardExpirationDate: '10/21',
-  creditCardHolder: 'Cássio Scofield',
-  creditCardNumber: '5555444433332222',
-  gateway: 'iugu',
-  installments: 1,
-  offerId: 18,
-  userId: 1,
-  id: 1
-}
+import submitPayment from './submitPayment'
+import submitPaymentResponse from './__fixtures__/submitPaymentResponse'
+import submitPaymentPayload from './__fixtures__/submitPaymentPayload'
 
 global.fetch = jest.fn(() =>
   Promise.resolve({
-    json: () => Promise.resolve(RESPONSE_MOCK)
+    json: () => Promise.resolve(submitPaymentResponse)
   })
 )
 
-describe('list plans', () => {
-  test('get list', () => {
-    getPlans()
+describe('submit payment', () => {
+  test('submit', () => {
+    submitPayment(submitPaymentPayload)
 
     expect(fetch).toHaveBeenCalledWith(
-      'https://private-0ced4-pebmeddesafiofrontend.apiary-mock.com/offer'
+      'https://private-0ced4-pebmeddesafiofrontend.apiary-mock.com/subscription',
+      {
+        body: JSON.stringify(submitPaymentPayload),
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST'
+      }
     )
   })
 })
