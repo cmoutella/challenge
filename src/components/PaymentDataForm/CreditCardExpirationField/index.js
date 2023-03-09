@@ -9,7 +9,6 @@ const CreditCardExpirationField = () => {
   const fieldLabel = 'Validade'
   const elementId = 'cardExpirationDate'
   const placeholder = 'DD/MM'
-  const inputMaxLenght = 5
 
   const handleDate = () => {
     const fullDate = formikContext.values.cardExpirationDate.split('/')
@@ -24,7 +23,8 @@ const CreditCardExpirationField = () => {
 
   const onChange = (e) => {
     const date = e.target.value
-    formikContext.setFieldValue(elementId, formatExpirationDate(date))
+    const value = date.slice(0, 5)
+    formikContext.setFieldValue(elementId, formatExpirationDate(value))
   }
 
   const onBlur = () => {
@@ -43,7 +43,6 @@ const CreditCardExpirationField = () => {
       placeholder={placeholder}
       onChange={onChange}
       onBlur={onBlur}
-      maxLenght={inputMaxLenght}
       helperText={isValidInput ? '' : 'Data inválida'}
       error={!isValidInput}
     />
