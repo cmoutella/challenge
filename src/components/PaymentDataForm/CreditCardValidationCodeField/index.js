@@ -6,13 +6,13 @@ const CreditCardVerificationCodeField = () => {
   const fieldLabel = 'CVV'
   const elementId = 'creditCardCVV'
   const placeholder = '000'
-  const inputMaxLenght = 3
 
   const formikContext = useContext(FormikContext)
 
   const onChange = (e) => {
     const cvv = e.target.value
-    formikContext.setFieldValue(elementId, cvv)
+    const value = cvv.slice(0, 3)
+    formikContext.setFieldValue(elementId, value)
   }
 
   return (
@@ -24,7 +24,7 @@ const CreditCardVerificationCodeField = () => {
       id={elementId}
       placeholder={placeholder}
       onChange={onChange}
-      maxLenght={inputMaxLenght}
+      type="number"
     />
   )
 }
